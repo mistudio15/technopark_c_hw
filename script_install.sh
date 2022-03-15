@@ -25,21 +25,21 @@ sudo make
 sudo cp *.a /usr/lib
 cd -
 
+echo _______________________sudo
 sudo --version
-echo _______________________
+echo _______________________pip
 pip --version
-echo _______________________
+echo _______________________lcov
 lcov --version
-echo _______________________
+echo _______________________gcc
 gcc --version
-echo _______________________
+echo _______________________clang-tidy-10
 clang-tidy-10 --version
-echo _______________________
+echo _______________________cpplint
 cpplint --version
-echo _______________________
+echo _______________________valgrind
 valgrind --version
-echo _______________________
+echo _______________________cmake
 cmake --version
-echo _______________________
+echo _______________________gtest
 whereis gtest
-echo _______________________
