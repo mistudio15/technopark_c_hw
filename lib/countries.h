@@ -13,7 +13,7 @@ bool create(FILE * input, Country **data, size_t *size);
 
 bool fill(FILE * input, Country *const data, size_t num);
 
-void show(FILE *output, const Country const *data, size_t size);
+void show(FILE *output, const Country *const data, size_t size);
 
 void swap(Country *const a, Country *const b);
 

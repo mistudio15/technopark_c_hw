@@ -37,15 +37,11 @@ bool fill(FILE * input, Country *const data, size_t size)
 			strcpy(data[i].capital, temp_capital);
 			i++;
 		}
-		else
-		{
-			return false;
-		}
 	}
 	return size == i;
 }
 
-void show(FILE *output, const Country const *data, size_t size)
+void show(FILE *output, const Country *const data, size_t size)
 {
 	fprintf(output, "%14s %14s %18s %13s\n", "square", "popul", "capital", "density");
 	for (size_t i = 0; i < size; ++i)
