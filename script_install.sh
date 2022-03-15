@@ -40,7 +40,7 @@ sudo make
 sudo cp *.a /usr/lib
 cd -
 
-sudo apt install clang
+sudo apt install clang-tools
 
 echo _______________________sudo
 sudo --version
