@@ -5,11 +5,26 @@ on:
     branches: hw1
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a one-line script
+      - name: Run script
+        run: sh ./script_install.sh
+      - name: test cppcheck
+        run: cppcheck main.c lib/countries.c --enable=all --inconclusive --error-exitcode=1 -I lib --suppress=missingIncludeSystem
+      - name: test clang-tidy
+        run: clang-tidy main.c lib/countries.c -warnings-as-errors=* -extra-arg=-std=c99 -- -Ilib
+      - name: test cpplint
+        run: cpplint --extensions=c main.c lib/countries.c
+      - name: test scan-build
+        run: scan-build gcc main.c lib/countries.c -Ilib
+  build:
+    runs-on: ubuntu-latest
+    needs: [check]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run script
         run: sh ./script_install.sh
       - name: build main
         run: |
@@ -17,22 +32,29 @@ jobs:
          cd build
          cmake ..
          make
-      - run: ls -la
+      - name: tree
+        run: | 
+          sudo apt install tree
+          tree
       - name: upload artifacts
         uses: actions/upload-artifact@v2 
         with:
-          path: build/main.out
+          path: build/main
   test:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - run: sh ./script_install.sh
+      - name: Run script
+        run: sh ./script_install.sh
       - run: |
          mkdir build
          cd build
          cmake ..
          make
          ./tests/test_countries
+      - name: test valgrind
+        run: |
+          valgrind --tool=memcheck -s --leak-check=yes build/main
       
       
