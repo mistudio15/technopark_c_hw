@@ -40,6 +40,8 @@ sudo make
 sudo cp *.a /usr/lib
 cd -
 
+sudo apt install scan-build
+
 echo _______________________sudo
 sudo --version
 echo _______________________pip
@@ -58,3 +60,5 @@ echo _______________________cmake
 cmake --version
 echo _______________________gtest
 whereis gtest
+echo _______________________scan-build
+whereis scan-build
