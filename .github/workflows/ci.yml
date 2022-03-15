@@ -22,10 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sh ./script_install.sh
-      mkdir build
-      cd build
-      cmake ..
-      make
-      ./tests/test_countries
+      - run: |
+         mkdir build
+         cd build
+         cmake ..
+         make
+         ./tests/test_countries
       
       
