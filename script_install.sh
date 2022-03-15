@@ -1,11 +1,26 @@
 echo Mikhail, hello!
 apt-get update -qq && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
 apt-get update && sudo apt-get install -y python3-pip
-apt-get update && apt-get install -y lcov
+# apt-get update && apt-get install -y lcov
+sudo apt install lcov
 apt-get update && sudo apt-get install -y gcc g++
-apt-get update && sudo apt-get install -y clang-10
-apt-get update && sudo apt-get install -y clang-tidy-10
+# apt-get update && sudo apt-get install -y clang-10
+# apt-get update && sudo apt-get install -y clang-tidy-10
+sudo apt install clang-tidy
+
 apt-get update && sudo pip install cpplint
+mkdir -p ~/project/build
+cd ~/project/build
+cmake -DENABLE_CPPLINT=ON ..
+make
+make cpplint
+
+pip install cpplint
+
+sudo apt-get -q install cppcheck
+
+sudo apt install velgrind
+            
 apt-get update && sudo apt-get install -y valgrind
 apt-get update && sudo apt-get install -y cmake
 
