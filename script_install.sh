@@ -19,7 +19,7 @@ pip install cpplint
 
 sudo apt-get -q install cppcheck
 
-sudo apt install velgrind
+sudo apt install valgrind
             
 apt-get update && sudo apt-get install -y valgrind
 apt-get update && sudo apt-get install -y cmake
@@ -40,7 +40,7 @@ sudo make
 sudo cp *.a /usr/lib
 cd -
 
-sudo apt install scan-build
+sudo apt install clang
 
 echo _______________________sudo
 sudo --version
