@@ -51,6 +51,7 @@ cd -
 
 sudo apt install clang-tools
 sudo apt install valgrind
+sudo apt-get install valgrind
 
 echo _______________________sudo
 sudo --version
