@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run script
+      - name: Run install script
         run: sh ./script_install.sh
       - name: test cppcheck
         run: cppcheck main.c lib/countries.c --enable=all --inconclusive -I lib --suppress=missingIncludeSystem
@@ -24,7 +24,7 @@ jobs:
     needs: [check]
     steps:
       - uses: actions/checkout@v2
-      - name: Run script
+      - name: Run install script
         run: sh ./script_install.sh
       - name: build main
         run: |
@@ -45,7 +45,7 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - name: Run script
+      - name: Run install script
         run: sh ./script_install.sh
       - run: |
          mkdir build
@@ -56,5 +56,16 @@ jobs:
       - name: test valgrind
         run: |
           valgrind --tool=memcheck -s --leak-check=yes build/main
+          5
+          643801 68084217 Paris
+          505990 47394223 Madrid
+          9519431 333449281 Washington
+          9598962 1411778724 Beijing
+          17125191 145478097 Moscow
+      - name: report lcov
+        run: |
+          lcov -t "tests/tests_countries" -o coverage.info -c -d lib/
+          genhtml -o report coverage.info
+        
       
       
