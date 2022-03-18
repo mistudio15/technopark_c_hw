@@ -8,7 +8,7 @@
 
 bool create(FILE *input, Country **data, size_t *size) {
   printf("Enter number of countries\n");
-  if (fscanf(input, "%ld", size)) {
+  if (fscanf(input, "%lu", size)) {
     *data = malloc(*size * sizeof(Country));
     if (*data) {
       for (size_t i = 0; i < *size; ++i) {
@@ -26,7 +26,7 @@ bool fill(FILE *input, Country *const data, size_t size) {
   }
   int i = 0;
   char temp_capital[255];
-  printf("Enter square (real), population (integer) and capital (word) %ld "
+  printf("Enter square (real), population (integer) and capital (word) %lu "
          "times\n",
          size);
   while ((size > i) && (fscanf(input, "%f %d %254s", &data[i].square,

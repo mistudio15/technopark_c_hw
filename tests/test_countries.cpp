@@ -23,9 +23,9 @@ TEST(test_create_and_fill, test_without_error) {
 
 TEST(test_show_countries, test_show_without_error) {
     size_t num = 5;
-    char buffer[] = "5 643801 68084217 Paris 505990 47394223 Madrid 9519431 333449281 Washington 9598962 1411778724 Beijing 17125191 145478097 Moscow";
+    char buffer[] = "5 643801 68084217 London 505990 47394223 Madrid 9519431 333449281 Washington 9598962 1411778724 Beijing 17125191 145478097 Moscow";
     char output[255];
-    char result_capital[][15] = {"Moscow", "Washington", "Madrid", "Paris", "Beijing"};
+    char result_capital[][15] = {"Moscow", "Washington", "Madrid", "London", "Beijing"};
     float result_density[] = {8.495, 35.028, 93.666, 105.754, 147.076};
     Country *countries = NULL;
     FILE *stream_in = fmemopen(buffer, strlen(buffer), "r");
@@ -80,6 +80,7 @@ TEST(test_incorrect_data, test_expected_n_countries_but_greater) {
     {
         EXPECT_TRUE(create(stream, &countries, &num));
         EXPECT_TRUE(fill(stream, countries, num));
+        destroy(countries, num);
     }
 }
 
