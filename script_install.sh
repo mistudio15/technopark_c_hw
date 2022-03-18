@@ -20,6 +20,15 @@ pip install cpplint
 sudo apt-get -q install cppcheck
 sudo apt-get install libc6-dbg
 sudo apt install valgrind
+
+apt-get update && \
+	apt-get upgrade -y &&  \
+	DEBIAN_FRONTEND=noninteractive apt-get install -y \
+		build-essential \
+		valgrind \
+		curl \
+		clang && \
+	rm -fr /var/lib/apt/lists/*
             
 apt-get update && sudo apt-get install -y valgrind
 apt-get update && sudo apt-get install -y cmake
