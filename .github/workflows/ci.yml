@@ -48,24 +48,26 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run install script
         run: sh ./script_install.sh
-      - run: |
+      - name: gtests
+        run: |
          mkdir build
          cd build
          cmake ..
          make
          ./tests/test_countries
-      - name: test valgrind
-        run: |
-          sudo apt install valgrind
-          valgrind --tool=memcheck -s --leak-check=yes build/main
-          5
-          643801 68084217 Paris
-          505990 47394223 Madrid
-          9519431 333449281 Washington
-          9598962 1411778724 Beijing
-          17125191 145478097 Moscow
+#       - name: test valgrind
+#         run: |
+#           sudo apt install valgrind
+#           valgrind --tool=memcheck -s --leak-check=yes build/main
+#           5
+#           643801 68084217 Paris
+#           505990 47394223 Madrid
+#           9519431 333449281 Washington
+#           9598962 1411778724 Beijing
+#           17125191 145478097 Moscow
       - name: report lcov
         run: |
+          cd build
           lcov -t "tests/tests_countries" -o coverage.info -c -d lib/
           genhtml -o report coverage.info
         
