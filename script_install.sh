@@ -18,7 +18,7 @@ make cpplint
 pip install cpplint
 
 sudo apt-get -q install cppcheck
-
+sudo apt-get install libc6-dbg
 sudo apt install valgrind
             
 apt-get update && sudo apt-get install -y valgrind
