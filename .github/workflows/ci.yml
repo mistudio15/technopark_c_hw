@@ -31,15 +31,7 @@ jobs:
          mkdir build
          cd build
          cmake ..
-         make
-         ./main
-         5
-         643801 68084217 Paris
-         505990 47394223 Madrid
-         9519431 333449281 Washington
-         9598962 1411778724 Beijing
-         17125191 145478097 Moscow
-         
+         make     
       - name: tree
         run: | 
           sudo apt install tree
