@@ -55,6 +55,7 @@ jobs:
          ./tests/test_countries
       - name: test valgrind
         run: |
+          sudo apt install valgrind
           valgrind --tool=memcheck -s --leak-check=yes build/main
           5
           643801 68084217 Paris
