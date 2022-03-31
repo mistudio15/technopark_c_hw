@@ -6,7 +6,7 @@
 
 #include "lib.h"
 
-FILE *find_file(char *argv_1) {
+FILE *find_file(char *const argv_1) {
   FILE *file;
   const char dir[] = "../file_data/";
   char *file_name = calloc((strlen(dir) + strlen(argv_1) + 1), sizeof(char));

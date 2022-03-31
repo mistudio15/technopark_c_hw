@@ -32,7 +32,7 @@ int generate_data(FILE *file, const int num_points, const int k, const int b);
 
 list *list_from_file(FILE *file, const int num_threads);
 
-FILE *find_file(char *argv_1);
+FILE *find_file(char *const argv_1);
 
 FILE *create_file();
 

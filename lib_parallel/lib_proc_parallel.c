@@ -61,6 +61,7 @@ int manage_threads(list *const header, const int num_threads) {
     int errflag =
         pthread_create(&threads[index], NULL, threads_routine, current);
     if (errflag != 0) {
+      free(threads);
       return 0;
     }
     current = current->next;
@@ -69,6 +70,7 @@ int manage_threads(list *const header, const int num_threads) {
   for (int i = 0; i < num_threads; i++) {
     int errflag = pthread_join(threads[i], NULL);
     if (errflag != 0) {
+      free(threads);
       return 0;
     }
   }
