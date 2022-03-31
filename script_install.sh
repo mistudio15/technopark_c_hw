@@ -1,11 +1,9 @@
 echo Mikhail, hello!
+sudo apt update
 apt-get update -qq && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
 apt-get update && sudo apt-get install -y python3-pip
-# apt-get update && apt-get install -y lcov
 sudo apt install lcov
 apt-get update && sudo apt-get install -y gcc g++
-# apt-get update && sudo apt-get install -y clang-10
-# apt-get update && sudo apt-get install -y clang-tidy-10
 sudo apt install clang-tidy
 
 apt-get update && sudo pip install cpplint
@@ -15,32 +13,20 @@ cmake -DENABLE_CPPLINT=ON ..
 make
 make cpplint
 
-pip install cpplint
-
 sudo apt-get -q install cppcheck
 sudo apt-get install libc6-dbg
 sudo apt install valgrind
 
-apt-get update && \
-	apt-get upgrade -y &&  \
-	DEBIAN_FRONTEND=noninteractive apt-get install -y \
-		build-essential \
-		valgrind \
-		curl \
-		clang && \
-	rm -fr /var/lib/apt/lists/*
+# apt-get update && \
+# 	apt-get upgrade -y &&  \
+# 	DEBIAN_FRONTEND=noninteractive apt-get install -y \
+# 		build-essential \
+# 		valgrind \
+# 		curl \
+# 		clang && \
+# 	rm -fr /var/lib/apt/lists/*
             
-apt-get update && sudo apt-get install -y valgrind
 apt-get update && sudo apt-get install -y cmake
-
-# git clone https://github.com/google/googletest
-# cd ~/project/googletest
-# mkdir -p ~/project/googletest/build
-# cd ~/project/googletest/build
-# sudo cmake ..
-# make
-# make install
-# cd ~/project
 
 sudo apt-get -q install libgtest-dev
 cd /usr/src/gtest
@@ -49,9 +35,6 @@ sudo make
 sudo cp *.a /usr/lib
 cd -
 
-sudo apt install clang-tools
-sudo apt install valgrind
-sudo apt-get install valgrind
 
 echo _______________________sudo
 sudo --version
