@@ -16,7 +16,7 @@ jobs:
       - name: test clang-tidy
         run: clang-tidy main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c -warnings-as-errors=* -extra-arg=-std=c99 -- -Iinclude
       - name: test scan-build
-        run: scan-build gcc main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c -Iinclude
+        run: scan-build gcc main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c -Iinclude -pthread
   build:
     runs-on: ubuntu-latest
     needs: [check]
