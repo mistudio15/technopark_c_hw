@@ -15,8 +15,6 @@ jobs:
         run: cppcheck main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c --enable=all --inconclusive -I include --suppress=missingIncludeSystem
       - name: test clang-tidy
         run: clang-tidy main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c -warnings-as-errors=* -extra-arg=-std=c99 -- -Iinclude
-      - name: test cpplint
-        run: cpplint --extensions=c main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c 
       - name: test scan-build
         run: scan-build gcc main.c lib_consistent/*.c lib_parallel/*.c lib_manage_data/*.c -Iinclude
   build:
