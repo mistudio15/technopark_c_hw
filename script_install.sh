@@ -5,6 +5,7 @@ apt-get update && sudo apt-get install -y python3-pip
 sudo apt install lcov
 apt-get update && sudo apt-get install -y gcc g++
 sudo apt install clang-tidy
+sudo apt install clang-tools
 
 apt-get update && sudo pip install cpplint
 mkdir -p ~/project/build
