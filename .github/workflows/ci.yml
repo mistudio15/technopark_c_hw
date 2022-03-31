@@ -39,21 +39,27 @@ jobs:
         run: sh ./script_install.sh
       - name: gtests
         run: |
-         mkdir build
-         cd build
-         cmake ..
-         make
-         ./tests
+          mkdir build
+          cd build
+          cmake ..
+          make
+          ./tests
       - name: report lcov
         run: |
           cd build
           lcov -t "tests" -o coverage_parallel.info -c -d CMakeFiles/FIND_PARALLEL_LIB.dir/
           lcov -t "tests" -o coverage_consistent.info -c -d CMakeFiles/FIND_CONSISTENT_LIB.dir/
+          lcov -t "tests" -o coverage_manage_data.info -c -d CMakeFiles/FIND_MANAGE_DATA_LIB.dir/
       - name: result coverage tests
         run: |
           cd build
           genhtml -o report_parallel coverage_parallel.info
           genhtml -o report_consistent coverage_consistent.info
+          genhtml -o report_manage_data coverage_manage_data.info
+      - name: run main
+        run: |
+          cd build
+          ./hw2
       - name: test valgrind
         run: |
           cd build
