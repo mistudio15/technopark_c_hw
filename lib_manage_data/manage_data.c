@@ -66,7 +66,7 @@ int generate_data(FILE *file, const int num_points, const int k, const int b) {
 }
 
 list *list_from_file(FILE *file, const int num_threads) {
-  if (!file || fseek(file, 0, SEEK_SET) != 0) {
+  if (!file || fseek(file, 0, SEEK_SET) != 0 || num_threads < 1) {
     return 0;
   }
   int num_points;

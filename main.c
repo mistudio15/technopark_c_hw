@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
   if (!code) {
     return CODE_ERROR;
   }
+  // int num_threads = get_nprocs();
   int num_threads = get_nprocs();
   list *header = list_from_file(file, num_threads);
   if (!header) {
