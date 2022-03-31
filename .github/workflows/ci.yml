@@ -51,6 +51,7 @@ jobs:
           lcov -t "tests" -o coverage_consistent.info -c -d CMakeFiles/FIND_CONSISTENT_LIB.dir/
       - name: result coverage tests
         run: |
+          cd build
           genhtml -o report_parallel coverage_parallel.info
           genhtml -o report_consistent coverage_consistent.info
 
