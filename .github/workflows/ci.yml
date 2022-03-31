@@ -54,6 +54,10 @@ jobs:
           cd build
           genhtml -o report_parallel coverage_parallel.info
           genhtml -o report_consistent coverage_consistent.info
+      - name: test valgrind
+        run: |
+          cd build
+          valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./hw2
 
 
       
