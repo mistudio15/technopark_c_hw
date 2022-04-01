@@ -24,8 +24,8 @@ TEST(test_correct_data, test_solve_problem_consistent_and_parallel) {
     EXPECT_NEAR(result_parallel->k, k, 0.1);
     EXPECT_NEAR(result_parallel->b, b, 0.1);
 
-    EXPECT_NEAR(result_parallel->b, result_consistent->b, 0.1);
-    EXPECT_NEAR(result_parallel->k, result_consistent->k, 0.1);
+    EXPECT_NEAR(result_parallel->b, result_consistent->b, 0.001);
+    EXPECT_NEAR(result_parallel->k, result_consistent->k, 0.001);
     delete result_parallel;
     delete result_consistent;
     fclose(file);
@@ -44,8 +44,8 @@ TEST(test_correct_data, test_1_million_points) {
     linear_func_params* result_consistent = least_square_method(header);
     linear_func_params* result_parallel = least_square_method_parallel(header);
 
-    EXPECT_NEAR(result_parallel->b, result_consistent->b, 0.1);
-    EXPECT_NEAR(result_parallel->k, result_consistent->k, 0.1);
+    EXPECT_NEAR(result_parallel->b, result_consistent->b, 0.001);
+    EXPECT_NEAR(result_parallel->k, result_consistent->k, 0.001);
     delete result_parallel;
     delete result_consistent;
     fclose(file);
