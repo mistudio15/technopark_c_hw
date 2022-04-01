@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #include "lib.h"
-int count = 0;
+
 typedef struct statistical_params {
   pthread_mutex_t mutex;
   float a11;
@@ -16,14 +16,14 @@ typedef struct statistical_params {
 statistical_params st_params = {PTHREAD_MUTEX_INITIALIZER};
 
 void *threads_routine(void *arg) {
-  list *header = (list *)arg;
-  if (!header) {
+  list *node_local = (list *)arg;
+  if (!node_local) {
     return 0;
   }
   float a11_local = 0, a2_local = 0, mx_local = 0, my_local = 0;
-  for (int i = 0; i < header->size_array; i++) {
-    float x = header->array[i].x;
-    float y = header->array[i].y;
+  for (int i = 0; i < node_local->size_array; i++) {
+    float x = node_local->array[i].x;
+    float y = node_local->array[i].y;
     a11_local += x * y;
     a2_local += x * x;
     mx_local += x;

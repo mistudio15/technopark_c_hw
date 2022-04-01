@@ -6,6 +6,11 @@
 
 #include "lib.h"
 
+#define X_START 0
+#define X_END 10
+#define NOISE_START -5
+#define NOISE_END 5
+
 FILE *find_file(char *const argv_1) {
   FILE *file;
   const char dir[] = "../file_data/";
@@ -58,8 +63,8 @@ int generate_data(FILE *file, const int num_points, const int k, const int b) {
   fprintf(file, "%d\n", num_points);
   for (int i = 0; i < num_points; ++i) {
     float x, y;
-    x = get_rand_range(0, 10);
-    y = k * x + b + get_rand_range(-5, 5);
+    x = get_rand_range(X_START, X_END);
+    y = k * x + b + get_rand_range(NOISE_START, NOISE_END);
     fprintf(file, "%f %f\n", x, y);
   }
   return 1;

@@ -7,7 +7,7 @@
 
 #include "lib.h"
 
-#define N_DATA 1000
+#define N_DATA 1000000
 #define K 2
 #define B 5
 #define CODE_ERROR -1
@@ -37,11 +37,11 @@ int main(int argc, char *argv[]) {
   if (!result_consistent) {
     return CODE_ERROR;
   }
-  printf("Последовательно. Коэффициент k = %f, свободный член b = %f\n",
+  printf("Result of consistent processing: k = %f, b = %f\n",
          result_consistent->k, result_consistent->b);
   clock_t end_1 = clock();
   double time_consistent = (double)(end_1 - begin_1) / CLOCKS_PER_SEC;
-  printf("Время последовательной обработки = %f\n", time_consistent);
+  printf("Time of consistent processing %f\n", time_consistent);
   free(result_consistent);
 
   clock_t begin_2 = clock();
@@ -49,11 +49,11 @@ int main(int argc, char *argv[]) {
   if (!result_parallel) {
     return CODE_ERROR;
   }
-  printf("Параллельно. Коэффициент k = %f, свободный член b = %f\n",
+  printf("Result of parallel processing: k = %f, b = %f\n",
          result_parallel->k, result_parallel->b);
   clock_t end_2 = clock();
   double time_parallel = (double)(end_2 - begin_2) / CLOCKS_PER_SEC;
-  printf("Время параллельной обработки = %f\n", time_parallel);
+  printf("Time of parallel processing %f\n", time_parallel);
   free(result_parallel);
 
   free_list(header);
