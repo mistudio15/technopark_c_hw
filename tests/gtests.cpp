@@ -18,11 +18,11 @@ TEST(test_correct_data, test_solve_problem_consistent_and_parallel) {
     ASSERT_EQ(1, code);
     list* header = list_from_file(file, num_threads);
     linear_func_params* result_consistent = least_square_method(header);
-    EXPECT_NEAR(result_consistent->k, k, 0.1);
-    EXPECT_NEAR(result_consistent->b, b, 0.1);
+    EXPECT_NEAR(result_consistent->k, k, 0.2);
+    EXPECT_NEAR(result_consistent->b, b, 0.2);
     linear_func_params* result_parallel = least_square_method_parallel(header);
-    EXPECT_NEAR(result_parallel->k, k, 0.1);
-    EXPECT_NEAR(result_parallel->b, b, 0.1);
+    EXPECT_NEAR(result_parallel->k, k, 0.2);
+    EXPECT_NEAR(result_parallel->b, b, 0.2);
 
     EXPECT_NEAR(result_parallel->b, result_consistent->b, 0.1);
     EXPECT_NEAR(result_parallel->k, result_consistent->k, 0.1);
